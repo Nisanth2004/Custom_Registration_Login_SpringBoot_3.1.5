@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home</title>
+<style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dashboard-container {
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            margin: 20px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        h2 {
+            color: #5e057e;
+        }
+
+        p {
+            color: #c299d0;
+            font-size:30px;
+        }
+        strong
+        {
+        font-size:50px;
+        }
+        span
+        {
+        text-decoration:none;
+        }
+
+        
+    </style>
+</head>
+<body>
+<div class="dashboard-container">
+    <h2>Welcome to Your Dashboard</h2>
+    <p>Hello, <strong th:text="${userdetail.fullname}">User Name</strong>!</p>
+    <!-- You can replace "User Name" with the actual user's name dynamically -->
+</div>
+<span sec:authorized="isAuthenticated"><a th:href="@{/logout}">Logout</a></span>
+</body>
+</html>

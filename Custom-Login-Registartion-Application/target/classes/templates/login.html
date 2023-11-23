@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+ <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 20px;
+            width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #5e057e;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #5e057e;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #5e057e;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+        }
+        
+        .logout-message {
+            background-color: #5e057e;
+            color: #fff;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .error-message {
+            background-color: #ff6b6b;
+            color: #fff;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body>
+<div class="form-container">
+<div th:if="${param.error}">
+<div class="error-message">
+    <p>Error! Invalid username or password. Please try again.</p>
+</div></div>
+
+<div th:if="${param.logout}">
+<div class="logout-message">
+    <p>Logout Successfully!!</p>
+</div></div>
+
+    <h2>Login Form</h2>
+    <form method="post"
+      role="form" th:action="@{/login}"
+      th:object="${user}">
+         
+       
+
+        <label for="username">Username:</label>
+        <input th:field="*{username}" type="text" id="username" name="username" placeholder="Enter your user name" required>
+
+          <label for="password">Password:</label>
+        <input th:field="*{password}"  type="password" id="password" name="password" placeholder="Enter your password"required>
+       
+        <button type="submit">Login</button>
+    </form>
+    <br>
+    <br>
+   <center> <span>Registered Here??:<a th:href="@{/register}">Register</a></span></center>
+</div>
+</body>
+</html>
